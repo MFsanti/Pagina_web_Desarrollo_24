@@ -1,5 +1,5 @@
 :root {
-    --primary-bg-image: url(fotitos/wp7883434.jpg);
+    --primary-bg-image: url('fotitos/wp7883434.jpg');
     --text-light: #ffffff;
     --text-dark: #333;
     --nav-bg: #111;
@@ -15,9 +15,9 @@
     --border-radius-lg: 1.5625rem;
     --box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
- 
-html{
-    cursor: url(fotitos/fuego.png),auto;
+
+html {
+    cursor: url('fotitos/fuego.png'), auto;
 }
 
 /* Base styles */
@@ -83,7 +83,7 @@ body {
     width: 0;
     background-color: var(--nav-bg);
     overflow-x: hidden;
-    transition: width var (--transition-speed);
+    transition: width var(--transition-speed), transform var(--transition-speed);
     z-index: 3;
     box-shadow: var(--box-shadow-md);
 }
