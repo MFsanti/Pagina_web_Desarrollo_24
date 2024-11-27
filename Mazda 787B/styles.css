@@ -1,10 +1,11 @@
 :root {
-    --primary-bg: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    --primary-bg-image: url(fotitos/wp7883434.jpg);
     --text-light: #ffffff;
     --text-dark: #333;
     --nav-bg: #111;
     --nav-text: #818181;
     --nav-text-hover: #f1f1f1;
+    --accent-color: #f43500;
     --spacing-sm: 0.625rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
@@ -12,32 +13,49 @@
     --border-radius-sm: 0.625rem;
     --border-radius-md: 0.9375rem;
     --border-radius-lg: 1.5625rem;
+    --box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+ 
+html{
+    cursor: url(fotitos/fuego.png),auto;
 }
 
 /* Base styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background: var(--primary-bg);
-    color: var(--text-dark);
+    background: var(--primary-bg-image) no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-light);
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: background var(--transition-speed);
 }
 
 /* Typography classes */
-.title-primary {
+.title-primary, .text-content, header, section {
     color: var(--text-light);
-    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: rgba(28, 28, 28, 0.8); /* Fondo semitransparente */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-md);
+    text-align: justify;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: var(--spacing-md);
+}
+
+.title-primary {
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .text-content {
-    color: var(--text-light);
     font-size: 1rem;
     line-height: 1.6;
-    margin: var(--spacing-md);
 }
 
 /* Navigation */
@@ -65,11 +83,12 @@ body {
     width: 0;
     background-color: var(--nav-bg);
     overflow-x: hidden;
-    transition: width var(--transition-speed);
+    transition: width var (--transition-speed);
     z-index: 3;
+    box-shadow: var(--box-shadow-md);
 }
 
-.menu-container:hover+.sidenav,
+.menu-container:hover + .sidenav,
 .sidenav:hover {
     width: 250px;
 }
@@ -80,11 +99,13 @@ body {
     font-size: 25px;
     color: var(--nav-text);
     display: block;
-    transition: color var(--transition-speed);
+    transition: color var(--transition-speed), background-color var(--transition-speed);
 }
 
 .menu-item:hover {
     color: var(--nav-text-hover);
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius-sm);
 }
 
 /* Main content */
@@ -94,6 +115,7 @@ body {
     margin: 0 auto;
     padding-left: var(--spacing-lg);
     padding-right: var(--spacing-lg);
+    transition: padding var(--transition-speed);
 }
 
 header {
@@ -116,6 +138,12 @@ section {
     margin: var(--spacing-lg) auto;
     display: block;
     border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-md);
+    transition: transform var(--transition-speed);
+}
+
+.img-hero:hover {
+    transform: scale(1.05);
 }
 
 .grid-gallery {
@@ -137,22 +165,26 @@ section {
     height: 200px;
     object-fit: cover;
     border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-md);
     transition: transform var(--transition-speed), border-radius var(--transition-speed);
 }
 
 .img-gallery:hover {
     transform: scale(1.1);
     border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-md);
 }
 
 img:not(.img-gallery):not(.img-hero):not(.logo-img) {
     border-radius: var(--border-radius-sm);
+    transition: border-radius var(--transition-speed);
 }
 
 .caption-gallery {
     margin-top: var(--spacing-sm);
     font-size: 0.875rem;
     color: var(--text-light);
+    transition: color var(--transition-speed);
 }
 
 /* Footer */
@@ -160,6 +192,7 @@ img:not(.img-gallery):not(.img-hero):not(.logo-img) {
     margin-top: auto;
     background-color: var(--nav-bg);
     padding: var(--spacing-sm) 0;
+    box-shadow: var(--box-shadow-md);
 }
 
 .footer-text {
@@ -230,4 +263,25 @@ img:not(.img-gallery):not(.img-hero):not(.logo-img) {
 
 .footer-buttons a:hover {
     color: var(--nav-text-hover);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
